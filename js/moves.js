@@ -9,12 +9,7 @@ let PlayerMoves = {
 
     let playerAttack = function(currentPlayer) {
       let calcBaseDamage;
-      if (currentPlayer.mana > 0) {
-        calcBaseDamage = (currentPlayer.strength * currentPlayer.mana) / 1000;
-      } else {
-        calcBaseDamage =
-          (currentPlayer.strength * currentPlayer.agility) / 1000;
-      }
+      calcBaseDamage = (currentPlayer.strength * currentPlayer.agility) / 1000;
       //calcular un ataque que no sea siempre el mismo
       let ofsetDamage = Math.floor(Math.random() * Math.floor(10));
       let calcoutPutDamage = calcBaseDamage + ofsetDamage;
@@ -57,7 +52,7 @@ let PlayerMoves = {
     if (getPlayerSpeed >= getEnemySpeed) {
       let playerAttackValues = playerAttack(currentPlayer);
       let totalDamage = playerAttackValues[0] * playerAttackValues[1];
-      enemy.health = enemy.health - totalDamage;
+      enemy.health = Math.floor(enemy.health - totalDamage);
       alert(
         "Your " +
           currentPlayer.classType +
@@ -78,7 +73,7 @@ let PlayerMoves = {
 
         let enemyAttackValues = enemyAttack(currentEnemy);
         let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
-        player.health = player.health - totalDamage;
+        player.health = Math.floor(player.health - totalDamage);
         alert(
           "The enemy " +
             currentEnemy.enemyType +
@@ -103,7 +98,7 @@ let PlayerMoves = {
     if (getEnemySpeed >= getPlayerSpeed) {
       let enemyAttackValues = enemyAttack(currentEnemy);
       let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
-      player.health = player.health - totalDamage;
+      player.health = Math.floor(player.health - totalDamage);
       alert(
         "The enemy " +
           currentEnemy.enemyType +
@@ -124,7 +119,7 @@ let PlayerMoves = {
 
         let playerAttackValues = playerAttack(currentPlayer);
         let totalDamage = playerAttackValues[0] * playerAttackValues[1];
-        enemy.health = enemy.health - totalDamage;
+        enemy.health = Math.floor(enemy.health - totalDamage);
         alert(
           "Your " +
             currentPlayer.classType +
@@ -162,13 +157,14 @@ let SpecialPlayerMoves = {
 
     let playerAttack = function(currentPlayer) {
       let calcBaseDamage;
-      if (currentPlayer.mana > 0) {
+      if (currentPlayer.mana >= 10) {
         calcBaseDamage = (currentPlayer.strength * currentPlayer.mana) / 1000;
+        currentPlayer.mana -= 10;
       } else {
         alert("NOT ENOUGH MANA");
-        calcBaseDamage =
-          (currentPlayer.strength * currentPlayer.agility) / 1000;
+        calcBaseDamage = 0;
       }
+
       //calcular un ataque que no sea siempre el mismo
       let ofsetDamage = Math.floor(Math.random() * Math.floor(10));
       let calcoutPutDamage = calcBaseDamage + ofsetDamage;
@@ -204,6 +200,7 @@ let SpecialPlayerMoves = {
     };
     //conseguir la vida de personajes para modificarla
     let getPlayerHealth = document.querySelector(".health-player");
+    let getPlayerMana = document.querySelector(".mana-player");
     let getEnemyHealth = document.querySelector(".health-enemy");
 
     //iniciar ataques dependiendo de quien es mas rapido
@@ -211,7 +208,8 @@ let SpecialPlayerMoves = {
     if (getPlayerSpeed >= getEnemySpeed) {
       let playerAttackValues = playerAttack(currentPlayer);
       let totalDamage = playerAttackValues[0] * playerAttackValues[1];
-      enemy.health = enemy.health - totalDamage;
+
+      enemy.health = Math.floor(enemy.health - totalDamage);
       alert(
         "Your " +
           currentPlayer.classType +
@@ -232,7 +230,7 @@ let SpecialPlayerMoves = {
 
         let enemyAttackValues = enemyAttack(currentEnemy);
         let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
-        player.health = player.health - totalDamage;
+        player.health = Math.floor(player.health - totalDamage);
         alert(
           "The enemy " +
             currentEnemy.enemyType +
@@ -257,7 +255,7 @@ let SpecialPlayerMoves = {
     if (getEnemySpeed >= getPlayerSpeed) {
       let enemyAttackValues = enemyAttack(currentEnemy);
       let totalDamage = enemyAttackValues[0] * enemyAttackValues[1];
-      player.health = player.health - totalDamage;
+      player.health = Math.floor(player.health - totalDamage);
       alert(
         "The enemy " +
           currentEnemy.enemyType +
@@ -278,7 +276,7 @@ let SpecialPlayerMoves = {
 
         let playerAttackValues = playerAttack(currentPlayer);
         let totalDamage = playerAttackValues[0] * playerAttackValues[1];
-        enemy.health = enemy.health - totalDamage;
+        enemy.health = Math.floor(enemy.health - totalDamage);
         alert(
           "Your " +
             currentPlayer.classType +
@@ -298,7 +296,10 @@ let SpecialPlayerMoves = {
         }
       }
     }
+
+    getPlayerMana.innerHTML = "Mana: " + currentPlayer.mana;
   }
 };
 
+// forma de exportar mas de una funcion en un solo js
 export { PlayerMoves, SpecialPlayerMoves };

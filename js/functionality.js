@@ -46,16 +46,16 @@ let GameManager = {
         player = new Player(classType, 220, 100, 170, 80, 90, "HOLY SMITE");
         break;
       case "Hunter":
-        player = new Player(classType, 170, 0, 100, 200, 180, "SNIPE");
+        player = new Player(classType, 170, 100, 100, 200, 180, "SNIPE");
         break;
       case "Mage":
         player = new Player(classType, 150, 180, 70, 100, 90, "FROSTBALL");
         break;
       case "Druid":
-        player = new Player(classType, 170, 0, 150, 150, 180, "LUNAR FLARE");
+        player = new Player(classType, 170, 150, 150, 150, 180, "LUNAR FLARE");
         break;
       case "Rogue":
-        player = new Player(classType, 150, 0, 30, 200, 190, "BACKSTAB");
+        player = new Player(classType, 150, 50, 30, 200, 190, "BACKSTAB");
         break;
       case "Sorcerer":
         player = new Player(
@@ -72,7 +72,7 @@ let GameManager = {
         player = new Player(classType, 150, 50, 80, 150, 100, "RAVAGE");
         break;
       case "Warrior":
-        player = new Player(classType, 250, 0, 220, 50, 50, "SKULL BASH");
+        player = new Player(classType, 250, 20, 220, 50, 50, "SKULL BASH");
         break;
     }
     specialMove = player.special;
@@ -87,7 +87,7 @@ que le pongamos*/
       classType +
       "<h3><p class='health-player'>Health: " +
       player.health +
-      "</p><p>Mana: " +
+      "</p><p class='mana-player'>Mana: " +
       player.mana +
       "</p><p>Strength: " +
       player.strength +
@@ -125,7 +125,7 @@ que le pongamos*/
     let enemy00 = new Enemy("Goblin", 150, 0, 100, 100, 90);
     let enemy01 = new Enemy("Warlock", 200, 150, 100, 120, 100);
     let enemy02 = new Enemy("Banshee", 180, 50, 100, 180, 180);
-    let enemy03 = new Enemy("Berserker", 250, 0, 180, 50, 50);
+    let enemy03 = new Enemy("Berserker", 250, 0, 180, 60, 50);
     let enemy04 = new Enemy("Nerubian", 250, 0, 100, 60, 20);
     let enemy05 = new Enemy("Illidan", 150, 0, 50, 170, 170);
     let enemy06 = new Enemy("Dreadlord", 230, 50, 80, 40, 60);
