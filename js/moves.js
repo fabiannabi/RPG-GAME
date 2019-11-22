@@ -165,6 +165,7 @@ let SpecialPlayerMoves = {
       if (currentPlayer.mana > 0) {
         calcBaseDamage = (currentPlayer.strength * currentPlayer.mana) / 1000;
       } else {
+        alert("NOT ENOUGH MANA");
         calcBaseDamage =
           (currentPlayer.strength * currentPlayer.agility) / 1000;
       }
